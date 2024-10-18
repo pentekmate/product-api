@@ -35,6 +35,7 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => "email|required",
+            'name'=>'string|required',
             'phoneNumber' => "required|string",
             'payment' => "required|string",
             'address' => 'required|string',
@@ -59,6 +60,7 @@ class OrderController extends Controller
             'phoneNumber'=>$request->phoneNumber,
             'address'=>$request->address,
             'payment'=>$request->payment,
+            'name'=>$request->name,
         ]);
 
         foreach ($validatedData['items'] as $item) {

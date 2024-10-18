@@ -21,7 +21,8 @@ class OrderFactory extends Factory
             'address'=>fake()->address,
             'payment'=>collect($payments)->random(),
             'phoneNumber'=>fake()->phoneNumber(),
-            'email'=>fake()->email()
+            'email'=>fake()->email(),
+            'name'=>fake()->email()
         ];
     }
 }

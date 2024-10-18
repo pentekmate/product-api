@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('payment');
             $table->string('phoneNumber');
             $table->string('email');
+            $table->string('name');
         });
     }
 
