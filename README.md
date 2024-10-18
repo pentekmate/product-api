@@ -6,7 +6,7 @@ This API provides endpoints for user authentication, order creation, and product
 
 ### 1. Login User
 
-#### `POST /api/login`
+### `POST /api/login`
 
 This endpoint allows a user to log in by providing an email and password.
 
@@ -26,7 +26,7 @@ This endpoint allows a user to log in by providing an email and password.
 - On failure, returns an error message indicating invalid credentials.
 
 
-#### `POST /api/login`
+### `POST /api/login`
 
 This endpoint allows a user to create an order by providing the necessary details such as email, payment method, shipping address, phone number, and the items to order.
 
