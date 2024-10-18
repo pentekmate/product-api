@@ -9,6 +9,10 @@ class OrderItem extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = ['order_id', 'product_id', 'amount'];
+
+
     public function product()
     {
         return $this->belongsTo(Product::class); // Minden rendelési tétel egy termékhez tartozik

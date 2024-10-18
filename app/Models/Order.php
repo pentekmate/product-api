@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = ["user_id","address","payment","phoneNumber","email"];
     public function items()
     {
         return $this->hasMany(OrderItem::class); // Egy rendelésnek több rendelési tétel tartozhat

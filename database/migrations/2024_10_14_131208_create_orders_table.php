@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(User::class);
+            $table->string('address');
+            $table->string('payment');
+            $table->string('phoneNumber');
+            $table->string('email');
         });
     }
 

@@ -16,8 +16,12 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $payments = ['after shipping','card'];
         return [
-            //
+            'address'=>fake()->address,
+            'payment'=>collect($payments)->random(),
+            'phoneNumber'=>fake()->phoneNumber(),
+            'email'=>fake()->email()
         ];
     }
 }

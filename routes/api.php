@@ -14,3 +14,5 @@ Route::apiResource('products',ProductController::class)->only(['index','show']);
 // Route::apiResource('orders',OrderController::class)->only(['index']);
 
 Route::apiResource('user.orders',OrderController::class)->scoped()->only(['index']);
+
+Route::post('/order',[OrderController::class,'store']);
