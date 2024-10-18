@@ -6,6 +6,7 @@ use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -32,15 +33,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'email'=>"email|required",
-            "phoneNumber"=>"required|string",
-            "payment"=>"required|string",
-            "address"=>'required|string',
-            'items' => 'required|array', // Az items egy tömb legyen
-            'items.*.product_id' => 'required|exists:products,id', // Minden terméknek léteznie kell a products táblában
-            'items.*.amount' => 'required|integer|min:1', // A mennyiség legyen legalább 1
+        $validator = Validator::make($request->all(), [
+            'email' => "email|required",
+            'phoneNumber' => "required|string",
+            'payment' => "required|string",
+            'address' => 'required|string',
+            'items' => 'required|array',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.amount' => 'required|integer|min:1',
         ]);
+
+        if ($validator->fails()) {
+            // Hibás validáció esetén itt visszaadjuk a hibákat, nem dobunk vissza route-okra
+            return response()->json([
+                'status' => 'error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $validatedData = $validator->validated();
 
         $order = Order::create([
             'user_id' => $request->user_id ?? 0, // A bejelentkezett felhasználó azonosítója
