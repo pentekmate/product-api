@@ -12,7 +12,7 @@ This endpoint allows a user to log in by providing an email and password.
 
 **Request Body:**
 
-```json
+ ```json
 {
     "email":"erno@gmail.com",
     "payment":"card",
@@ -29,8 +29,9 @@ This endpoint allows a user to log in by providing an email and password.
             "amount": 1
         }
     ]
-}
-```json
+} 
+ ```
+
 ** Response: **
 
 On successful login, returns a JSON Web Token (JWT) and user information.
